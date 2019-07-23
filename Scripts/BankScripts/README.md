@@ -1,1 +1,1 @@
-Don't Read Me
+1 - Camera move with player type of script
