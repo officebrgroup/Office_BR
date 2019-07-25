@@ -7,8 +7,7 @@ public class Player : MonoBehaviour
     public float speed = 10f;
     private Vector3 offset;
     public GameObject gameCamera;
-    public GameObject BulletType;
-    public GameObject GunTip;
+
     bool waitActive = false;
     public float timePerBullet = 0.2f;
 
@@ -45,15 +44,6 @@ public class Player : MonoBehaviour
         {
             transform.LookAt(new Vector3 (hit.point.x,transform.position.y,hit.point.z));
         }
-        // if(Input.GetMouseButton(0))
-        // {
-        //     if (!waitActive)
-        //     {
-        //         Instantiate(BulletType, GunTip.transform.position, GunTip.transform.rotation);
-        //         Debug.Log(hit.transform.name);
-        //         StartCoroutine(fireRate());
-        //     }
-        // }
     }
         
     
