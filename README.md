@@ -6,3 +6,7 @@ Ethan is not helping
 love you bank
 
 Eric is the best!!! love!!!
+
+Everybody, the office props are in the assets folder. There is a Google Drive link.
+
+We have not recieved the business people asset yet, but we can work on the level design now!!!
