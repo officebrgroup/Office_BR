@@ -1,23 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     public float speed = 10f;
-    private Vector3 offset;
+    private Vector3 offset = new Vector3 (0, 10, -10);
     public GameObject gameCamera;
-
-    bool waitActive = false;
-    public float timePerBullet = 0.2f;
-
-
-    IEnumerator fireRate(){
-        waitActive = true;
-        yield return new WaitForSeconds (timePerBullet);
-        waitActive = false;
-    }
-
+    private static string gunName;
+    
     void keyboard()
     {
         if (Input.GetKey(KeyCode.A))
@@ -45,18 +37,34 @@ public class Player : MonoBehaviour
             transform.LookAt(new Vector3 (hit.point.x,transform.position.y,hit.point.z));
         }
     }
-        
+    
+    public void loadGun()
+    {
+        GameObject Gun1 = Instantiate(Resources.Load(gunName, typeof(GameObject))) as GameObject;
+        Gun1.transform.parent = this.transform;
+        Gun1.transform.localPosition = new Vector3(0.5f, 0f, 0.5f);
+        if (gunName == "AK47")
+            Gun1.transform.rotation = Quaternion.Euler(0, 179, 0);
+        else
+        {
+            Gun1.transform.rotation = Quaternion.Euler(0, -1, 0);
+        }
+    
+    }
+
     
 
     void cameraFollow()
     {
-        
         gameCamera.transform.position = this.transform.position + offset;
-        //print(offset);
     }
     void Start()
     {
-        offset = gameCamera.transform.position - this.transform.position;
+        gunName = MainMenu.GunName;
+        Debug.Log(gunName);
+        loadGun();
+        
+
     }
 
     void Update()

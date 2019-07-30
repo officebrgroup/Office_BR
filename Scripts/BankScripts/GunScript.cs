@@ -58,7 +58,7 @@ public class GunScript : MonoBehaviour
         {
             currentAmmo--;
             nextTimeToFire = Time.time + 60f/ROF;
-            Instantiate(BulletType, GunTip.transform.position, GunTip.transform.rotation);
+            GameObject bullet = Instantiate(BulletType, GunTip.transform.position, GunTip.transform.rotation);
             flash.gameObject.SetActive(true);
             StartCoroutine(FlashWait());
         }
